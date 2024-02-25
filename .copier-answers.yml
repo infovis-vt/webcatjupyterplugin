@@ -1,0 +1,19 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v4.2.5
+_src_path: https://github.com/jupyterlab/extension-template
+author_email: sharma.rituraj13@gmail.com
+author_name: Rituraj Sharma
+data_format: string
+file_extension: ''
+has_binder: false
+has_settings: false
+kind: server
+labextension_name: jupyterWebCatConnect
+mimetype: ''
+mimetype_name: ''
+project_short_description: A JupyterLab extension to submit notebook to webcat.
+python_name: jupyterWebCatConnect
+repository: https://github.com/infovis-vt/webcatjupyterplugin
+test: false
+viewer_name: ''
+
