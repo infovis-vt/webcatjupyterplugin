@@ -1,10 +1,10 @@
-# jupyterWebCatConnect
+# jupyterwebcatconnect
 
-[![Github Actions Status](https://github.com/infovis-vt/webcatjupyterplugin/workflows/Build/badge.svg)](https://github.com/infovis-vt/webcatjupyterplugin/actions/workflows/build.yml)[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/infovis-vt/webcatjupyterplugin/main?urlpath=lab)
-A JupyterLab extension to submit notebook to webcat
+[![Github Actions Status](https://github.com/infovis-vt/webcatjupyterplugin/workflows/Build/badge.svg)](https://github.com/infovis-vt/webcatjupyterplugin/actions/workflows/build.yml)
+A JupyterLab extension to submit notebook to webcat.
 
-This extension is composed of a Python package named `jupyterWebCatConnect`
-for the server extension and a NPM package named `jupyterWebCatConnect`
+This extension is composed of a Python package named `jupyterwebcatconnect`
+for the server extension and a NPM package named `jupyterwebcatconnect`
 for the frontend extension.
 
 ## Requirements
@@ -16,7 +16,7 @@ for the frontend extension.
 To install the extension, execute:
 
 ```bash
-pip install jupyterWebCatConnect
+pip install jupyterwebcatconnect
 ```
 
 ## Uninstall
@@ -24,7 +24,7 @@ pip install jupyterWebCatConnect
 To remove the extension, execute:
 
 ```bash
-pip uninstall jupyterWebCatConnect
+pip uninstall jupyterwebcatconnect
 ```
 
 ## Troubleshoot
@@ -55,13 +55,13 @@ The `jlpm` command is JupyterLab's pinned version of
 
 ```bash
 # Clone the repo to your local environment
-# Change directory to the jupyterWebCatConnect directory
+# Change directory to the jupyterwebcatconnect directory
 # Install package in development mode
 pip install -e "."
 # Link your development version of the extension with JupyterLab
 jupyter labextension develop . --overwrite
 # Server extension must be manually installed in develop mode
-jupyter server extension enable jupyterWebCatConnect
+jupyter server extension enable jupyterwebcatconnect
 # Rebuild extension Typescript source after making changes
 jlpm build
 ```
@@ -87,13 +87,13 @@ jupyter lab build --minimize=False
 
 ```bash
 # Server extension must be manually disabled in develop mode
-jupyter server extension disable jupyterWebCatConnect
-pip uninstall jupyterWebCatConnect
+jupyter server extension disable jupyterwebcatconnect
+pip uninstall jupyterwebcatconnect
 ```
 
 In development mode, you will also need to remove the symlink created by `jupyter labextension develop`
 command. To find its location, you can run `jupyter labextension list` to figure out where the `labextensions`
-folder is located. Then you can remove the symlink named `jupyterWebCatConnect` within that folder.
+folder is located. Then you can remove the symlink named `jupyterwebcatconnect` within that folder.
 
 ### Packaging the extension
 

@@ -3,7 +3,7 @@ requires = ["hatchling>=1.5.0", "jupyterlab>=4.0.0,<5", "hatch-nodejs-version>=0
 build-backend = "hatchling.build"
 
 [project]
-name = "jupyterWebCatConnect"
+name = "jupyterwebcatconnect"
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.8"
@@ -34,25 +34,25 @@ source = "nodejs"
 fields = ["description", "authors", "urls"]
 
 [tool.hatch.build.targets.sdist]
-artifacts = ["jupyterWebCatConnect/labextension"]
+artifacts = ["jupyterwebcatconnect/labextension"]
 exclude = [".github", "binder"]
 
 [tool.hatch.build.targets.wheel.shared-data]
-"jupyterWebCatConnect/labextension" = "share/jupyter/labextensions/jupyterWebCatConnect"
-"install.json" = "share/jupyter/labextensions/jupyterWebCatConnect/install.json"
+"jupyterwebcatconnect/labextension" = "share/jupyter/labextensions/jupyterwebcatconnect"
+"install.json" = "share/jupyter/labextensions/jupyterwebcatconnect/install.json"
 "jupyter-config/server-config" = "etc/jupyter/jupyter_server_config.d"
 
 [tool.hatch.build.hooks.version]
-path = "jupyterWebCatConnect/_version.py"
+path = "jupyterwebcatconnect/_version.py"
 
 [tool.hatch.build.hooks.jupyter-builder]
 dependencies = ["hatch-jupyter-builder>=0.5"]
 build-function = "hatch_jupyter_builder.npm_builder"
 ensured-targets = [
-    "jupyterWebCatConnect/labextension/static/style.js",
-    "jupyterWebCatConnect/labextension/package.json",
+    "jupyterwebcatconnect/labextension/static/style.js",
+    "jupyterwebcatconnect/labextension/package.json",
 ]
-skip-if-exists = ["jupyterWebCatConnect/labextension/static/style.js"]
+skip-if-exists = ["jupyterwebcatconnect/labextension/static/style.js"]
 
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
 build_cmd = "build:prod"
@@ -62,7 +62,7 @@ npm = ["jlpm"]
 build_cmd = "install:extension"
 npm = ["jlpm"]
 source_dir = "src"
-build_dir = "jupyterWebCatConnect/labextension"
+build_dir = "jupyterwebcatconnect/labextension"
 
 [tool.jupyter-releaser.options]
 version_cmd = "hatch version"

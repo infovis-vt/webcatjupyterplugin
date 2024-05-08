@@ -5,7 +5,7 @@ import { IDisposable } from "@lumino/disposable";
 import { URLExt } from '@jupyterlab/coreutils';
 import { Dialog, showDialog } from '@jupyterlab/apputils';
 import { ServerConnection } from '@jupyterlab/services';
-import { Widget } from '@lumino/widgets';
+// import { Widget } from '@lumino/widgets';
 
 interface ResponseData {
     status: number;
@@ -116,31 +116,44 @@ export class SubmitButtonExtension implements DocumentRegistry.IWidgetExtension<
                     const data = await response.json() as ResponseData;
                     console.log("data", data);
                 
-                    // Create the iframe element
-                    const iframe = document.createElement('iframe');
-                    console.log("1");
-                    iframe.src = data.redirectLink;
-                    iframe.width = '650';
-                    iframe.height = '500';
+                    // // Create the iframe element
+                    // const iframe = document.createElement('iframe');
+                    // console.log("1");
+                    // iframe.src = data.redirectLink;
+                    // iframe.width = '650';
+                    // iframe.height = '500';
                 
-                    // Create the dialog body element
-                    const dialogBody = document.createElement('div');
-                    dialogBody.appendChild(iframe);
-                    console.log("2");
-                    const bodyWidget = new Widget({ node: dialogBody });
+                    // // Create the dialog body element
+                    // const dialogBody = document.createElement('div');
+                    // dialogBody.appendChild(iframe);
+                    // console.log("2");
+                    // const bodyWidget = new Widget({ node: dialogBody });
                 
-                    console.log("3");
-                    // Send the notebook content to the server
-                    console.log("bodyWidget", bodyWidget);
-                    console.log("showDialog", showDialog);
-                    console.log("Dialog.warnButton", bodyWidget.parent);
+                    // console.log("3");
+                    // // Send the notebook content to the server
+                    // console.log("bodyWidget", bodyWidget);
+                    // console.log("showDialog", showDialog);
+                    // console.log("Dialog.warnButton", bodyWidget.parent);
+                    // void showDialog({
+                    //   title: "Web-CAT",
+                    //   body: bodyWidget,
+                    //   buttons: [Dialog.warnButton({ label: 'Close' })]
+                    // });
+                    // console.log("4");
+                    // console.log("Dialog.warnButton", bodyWidget.parent);
+
+                    const newWindow = window.open(data.redirectLink, '_blank', 'noopener,noreferrer');
+                    if (newWindow) newWindow.opener = null;
+            
+                    console.log("Link opened in a new window");
+            
+                    // Optionally, you can still use a dialog to inform the user or handle other parts of the workflow
                     void showDialog({
-                      title: "Web-CAT",
-                      body: bodyWidget,
-                      buttons: [Dialog.warnButton({ label: 'Close' })]
+                        title: "Web-CAT",
+                        body: "The link has been opened in a new window.",
+                        buttons: [Dialog.warnButton({ label: 'Close' })]
                     });
-                    console.log("4");
-                    console.log("Dialog.warnButton", bodyWidget.parent);
+
                   } catch (error) {
                     console.error('Error processing response:', error);
                     alert("Error processing response. Please check the server logs for more details.");
