@@ -161,6 +161,7 @@ export class SubmitButtonExtension
       className: 'myButton',
       label: 'Submit to Web-Cat',
       // iconClassName: 'fa fa-fast-forward',
+      
       onClick: onClick,
       tooltip: 'Submit to WebCat'
     });
