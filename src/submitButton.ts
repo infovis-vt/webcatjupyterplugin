@@ -7,7 +7,7 @@ import { Dialog, showDialog } from '@jupyterlab/apputils';
 import { ServerConnection } from '@jupyterlab/services';
 // import { Widget } from '@lumino/widgets';
 
-interface ResponseData {
+interface IResponseData {
   status: number;
   statusText: string;
   responseText: string;
@@ -42,7 +42,7 @@ export class SubmitButtonExtension
 
       // Get the notebook content
 
-      var payload;
+      let payload;
       try {
         const elements = document.querySelectorAll('.jp-Notebook-cell');
         const elementsArray = Array.from(elements);
@@ -127,45 +127,19 @@ export class SubmitButtonExtension
 
       if (response.ok) {
         try {
-          const data = (await response.json()) as ResponseData;
+          const data = (await response.json()) as IResponseData;
           console.log('data', data);
-
-          // // Create the iframe element
-          // const iframe = document.createElement('iframe');
-          // console.log("1");
-          // iframe.src = data.redirectLink;
-          // iframe.width = '650';
-          // iframe.height = '500';
-
-          // // Create the dialog body element
-          // const dialogBody = document.createElement('div');
-          // dialogBody.appendChild(iframe);
-          // console.log("2");
-          // const bodyWidget = new Widget({ node: dialogBody });
-
-          // console.log("3");
-          // // Send the notebook content to the server
-          // console.log("bodyWidget", bodyWidget);
-          // console.log("showDialog", showDialog);
-          // console.log("Dialog.warnButton", bodyWidget.parent);
-          // void showDialog({
-          //   title: "Web-CAT",
-          //   body: bodyWidget,
-          //   buttons: [Dialog.warnButton({ label: 'Close' })]
-          // });
-          // console.log("4");
-          // console.log("Dialog.warnButton", bodyWidget.parent);
-
           const newWindow = window.open(
             data.redirectLink,
             '_blank',
             'noopener,noreferrer'
           );
-          if (newWindow) newWindow.opener = null;
+          if (newWindow) {
+            newWindow.opener = null;
+          }
 
           console.log('Link opened in a new window');
 
-          // Optionally, you can still use a dialog to inform the user or handle other parts of the workflow
           void showDialog({
             title: 'Web-CAT',
             body: 'The link has been opened in a new window.',
@@ -176,7 +150,6 @@ export class SubmitButtonExtension
           alert(
             'Error processing response. Please check the server logs for more details.'
           );
-          // Handle the error here, show a user-friendly message, etc.
         }
       } else {
         const data = await response.json();
