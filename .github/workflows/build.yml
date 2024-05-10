@@ -36,10 +36,10 @@ jobs:
         python -m pip install .[test]
 
         jupyter server extension list
-        jupyter server extension list 2>&1 | grep -ie "jupyterWebCatConnect.*OK"
+        jupyter server extension list 2>&1 | grep -ie "jupyterwebcatconnect.*OK"
 
         jupyter labextension list
-        jupyter labextension list 2>&1 | grep -ie "jupyterWebCatConnect.*OK"
+        jupyter labextension list 2>&1 | grep -ie "jupyterwebcatconnect.*OK"
         python -m jupyterlab.browser_check
 
     - name: Package the extension
@@ -48,7 +48,7 @@ jobs:
 
         pip install build
         python -m build
-        pip uninstall -y "jupyterWebCatConnect" jupyterlab
+        pip uninstall -y "jupyterwebcatconnect" jupyterlab
 
     - name: Upload extension packages
       uses: actions/upload-artifact@v3
@@ -77,14 +77,14 @@ jobs:
         sudo rm -rf $(which node)
         sudo rm -rf $(which node)
 
-        pip install "jupyterlab>=4.0.0,<5" jupyterWebCatConnect*.whl
+        pip install "jupyterlab>=4.0.0,<5" jupyterwebcatconnect*.whl
 
 
         jupyter server extension list
-        jupyter server extension list 2>&1 | grep -ie "jupyterWebCatConnect.*OK"
+        jupyter server extension list 2>&1 | grep -ie "jupyterwebcatconnect.*OK"
 
         jupyter labextension list
-        jupyter labextension list 2>&1 | grep -ie "jupyterWebCatConnect.*OK"
+        jupyter labextension list 2>&1 | grep -ie "jupyterwebcatconnect.*OK"
         python -m jupyterlab.browser_check --no-browser-test
 
 
