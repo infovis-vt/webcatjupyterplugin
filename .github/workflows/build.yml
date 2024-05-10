@@ -29,7 +29,8 @@ jobs:
         set -eux
         jlpm
         jlpm run lint:check
-
+        jupyter server extension enable jupyterwebcatconnect
+        
     - name: Build the extension
       run: |
         set -eux
